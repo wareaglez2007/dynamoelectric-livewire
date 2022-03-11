@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\AltNavigationMenu;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('contact-us', [App\Http\Livewire\Frontend\ContactUs::class, 'render'])->name('contact-us');
+Route::get('/altnav', AltNavigationMenu::class)->name('altnav');
