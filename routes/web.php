@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\MainHomePage;
 use App\Http\Livewire\AltNavigationMenu;
+use App\Http\Livewire\HomePage;
+use App\Http\Livewire\PagesLiveWireController;
 use Illuminate\Support\Facades\Route;
+use App\View\Components\FrontAppLayout;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +19,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/**
+ * Backend logic
+ */
+Route::middleware(['auth:sanctum', 'verified'])->prefix('secured')->group(function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('secured');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+/**
+ * Frontend Logic
+ * Any front end stuff should go here
+ */
+Route::prefix('')->group(function () {
 
-Route::get('contact-us', [App\Http\Livewire\Frontend\ContactUs::class, 'render'])->name('contact-us');
-Route::get('/altnav', AltNavigationMenu::class)->name('altnav');
+
+    Route::get('', function(){
+        return view('frontdashboard');
+    });
+    //Route::get('/homepage', PagesLiveWireController::class)->name('homepage');
+    /**
+     * Frontend routes taht I will need
+     * 1. PagesLivewireController (to control the dynamic pages)
+     * 2.
+     */
+
+});
+
+

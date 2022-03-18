@@ -11,7 +11,8 @@ use App\Actions\Jetstream\RemoveTeamMember;
 use App\Actions\Jetstream\UpdateTeamName;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
-
+use Livewire\Livewire;
+use App\Http\Livewire\NavigationMenu;
 class JetstreamServiceProvider extends ServiceProvider
 {
     /**
@@ -21,7 +22,11 @@ class JetstreamServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /**
+         * Rostom Sahakian 03-18-2022
+         * If you need to register a component do it here...
+         */
+        Livewire::component('livewire.navigation-menu', NavigationMenu::class);
     }
 
     /**

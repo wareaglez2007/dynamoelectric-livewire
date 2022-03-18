@@ -29,6 +29,19 @@ return [
      */
 
     'middleware' => ['web'],
+    /*
+    |--------------------------------------------------------------------------
+    | Jetstream Routes Prefix / Subdomain [@override 03-13-2022]
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which prefix Jetstream will assign to all the routes
+    | that it registers with the application. If necessary, you may change
+    | subdomain under which all of the Jetstream routes will be available.
+    |
+    */
+
+    'prefix' => 'auth',
+    'domain' => null,
 
     /*
     |--------------------------------------------------------------------------
