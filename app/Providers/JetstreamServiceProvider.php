@@ -13,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Jetstream\Jetstream;
 use Livewire\Livewire;
 use App\Http\Livewire\NavigationMenu;
+use Illuminate\Support\Facades\Blade;
+
 class JetstreamServiceProvider extends ServiceProvider
 {
     /**
@@ -68,5 +70,15 @@ class JetstreamServiceProvider extends ServiceProvider
             'create',
             'update',
         ])->description('Editor users have the ability to read, create, and update.');
+    }
+    /**
+     * Register the given component.
+     *
+     * @param  string  $component
+     * @return void
+     */
+    protected function registerComponent(string $component)
+    {
+        Blade::component('jetstream::components.'.$component, 'jet-'.$component);
     }
 }

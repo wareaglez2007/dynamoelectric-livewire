@@ -37,7 +37,7 @@ Route::prefix('')->group(function () {
 
     Route::get('', function(){
         return view('frontdashboard');
-    });
+    })->name('home');
     //Route::get('/homepage', PagesLiveWireController::class)->name('homepage');
     /**
      * Frontend routes taht I will need
