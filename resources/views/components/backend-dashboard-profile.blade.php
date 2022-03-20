@@ -1,4 +1,4 @@
-<div>
+
     <!-- Act only according to that maxim whereby you can, at the same time, will that it should become a universal law. - Immanuel Kant -->
     <div class="sticky top-0 z-10 flex h-16 flex-shrink-0 bg-white shadow">
         <button @click="open = ! open" type="button"
@@ -97,35 +97,36 @@
                             </x-dropdown-link>
                         @endif
 
+                        @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                            {{-- Teams --}}
+                            <div class="border-t border-gray-100"></div>
+                            <!-- Team Management -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Manage Team') }}
+                            </div>
 
-                        {{-- Teams --}}
-                        <div class="border-t border-gray-100"></div>
-                        <!-- Team Management -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Manage Team') }}
-                        </div>
-
-                        <!-- Team Settings -->
-                        <x-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
-                            {{ __('Team Settings') }}
-                        </x-dropdown-link>
-
-                        @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                            <x-dropdown-link href="{{ route('teams.create') }}">
-                                {{ __('Create New Team') }}
+                            <!-- Team Settings -->
+                            <x-dropdown-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}">
+                                {{ __('Team Settings') }}
                             </x-dropdown-link>
-                        @endcan
 
-                        <div class="border-t border-gray-100"></div>
+                            @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                                <x-dropdown-link href="{{ route('teams.create') }}">
+                                    {{ __('Create New Team') }}
+                                </x-dropdown-link>
+                            @endcan
 
-                        <!-- Team Switcher -->
-                        <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Switch Teams') }}
-                        </div>
+                            <div class="border-t border-gray-100"></div>
 
-                        @foreach (Auth::user()->allTeams() as $team)
-                            <x-jet-switchable-team :team="$team" />
-                        @endforeach
+                            <!-- Team Switcher -->
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('Switch Teams') }}
+                            </div>
+
+                            @foreach (Auth::user()->allTeams() as $team)
+                                <x-jet-switchable-team :team="$team" />
+                            @endforeach
+                        @endif
                         <div class="border-t border-gray-100"></div>
 
                         <!-- Authentication -->
@@ -142,4 +143,3 @@
             </div>
         </div>
     </div>
-</div>
