@@ -5,6 +5,7 @@ use App\Http\Controllers\MainHomePage;
 use App\Http\Livewire\AltNavigationMenu;
 use App\Http\Livewire\HomePage;
 use App\Http\Livewire\PagesLiveWireController;
+use App\View\Components\BackendDashboard;
 use Illuminate\Support\Facades\Route;
 use App\View\Components\FrontAppLayout;
 
@@ -38,7 +39,8 @@ Route::prefix('')->group(function () {
     Route::get('', function(){
         return view('frontdashboard');
     })->name('home');
-    //Route::get('/homepage', PagesLiveWireController::class)->name('homepage');
+
+
     /**
      * Frontend routes taht I will need
      * 1. PagesLivewireController (to control the dynamic pages)
