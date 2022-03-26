@@ -9,6 +9,8 @@ class NavigationMenu extends Component
 {
     public $dynamicNavigations;
 
+    
+
     public function render()
     {
         return view('livewire.navigation-menu');
